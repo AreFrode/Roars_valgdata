@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Generated analysis files
+*.png
+*.pdf
+results.csv
+Resultater.csv
+error_distribution.png
+party_analysis.png
+bias_analysis.png
+clustering_analysis.png

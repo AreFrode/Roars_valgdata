@@ -6,7 +6,7 @@ Enkel analyse av roar sin valgdata (small, single-notebook analysis).
 
 This repository contains:
 - analyse_data.ipynb — primary Jupyter notebook with the data analysis flow.
-- "Valgresultat 2025👍 (Svar) - Skjemasvar 1.csv" — raw CSV data (note: filename contains spaces and an emoji).
+- "Valgresultat 2025👍 (Svar) - Skjemasvar.csv" — raw CSV data (note: filename contains spaces and an emoji).
 - src/valgdata/ — small Python package extracted for programmatic use.
 - scripts/run_analysis.py — CLI wrapper that prints/saves a JSON summary of the CSV.
 - tests/ — basic tests for I/O and analysis.
@@ -30,7 +30,7 @@ Quickstart — run the analysis locally
 
 Notes about the CSV path
 - The CSV filename contains spaces and an emoji; when using it in scripts or shells, quote the path:
-  "Valgresultat 2025👍 (Svar) - Skjemasvar 1.csv"
+  "Valgresultat 2025👍 (Svar) - Skjemasvar.csv"
 - The CLI script defaults to the filename in the repo root; supply -i or --input to override.
 
 Running the notebook
@@ -64,44 +64,14 @@ Release process (CI)
   - GPG_PRIVATE_KEY — ASCII-armored private key contents used to sign built artifacts
   - GPG_PASSPHRASE — passphrase for the above key (empty string if key has no passphrase)
 
-How to create a GPG key and add secrets (recommended)
-1) Generate a passphrase-protected GPG key locally (example):
+---
 
-   gpg --batch --gen-key <<'EOF'
-   Key-Type: RSA
-   Key-Length: 4096
-   Subkey-Type: RSA
-   Subkey-Length: 4096
-   Name-Real: Your Name
-   Name-Email: you@example.com
-   Expire-Date: 0
-   EOF
+## Toolkit features (from main branch)
 
-   This will interactively create a key; omit --batch for interactive prompts. Use a strong passphrase and remember it.
+En enkel, men omfattende analyse av valgdata - for moro skyld! 🚀
 
-2) Export the private key (ASCII-armored) and copy it into the GPG_PRIVATE_KEY secret:
+This toolkit provides comprehensive analysis of election prediction data, including error analysis, bias detection, clustering of prediction patterns, and visualizations.
 
-   gpg --armor --export-secret-keys you@example.com > private.key.asc
-   # Then open private.key.asc and copy its full contents into the GPG_PRIVATE_KEY repository secret.
-
-3) Create an API token on PyPI (Account → API tokens) and add as PYPI_API_TOKEN; create a TestPyPI token for TEST_PYPI_API_TOKEN.
-
-4) Once secrets are configured, creating a GitHub release will trigger the workflow which:
-   - builds the package
-   - imports the GPG key and signs artifacts (if GPG_PRIVATE_KEY/GPG_PASSPHRASE are set)
-   - uploads signed artifacts to TestPyPI or PyPI depending on release type
-
-Local publishing (example)
-- Build and upload to TestPyPI (locally; requires twine and TEST_PYPI_API_TOKEN):
-
-  python -m build
-  python -m pip install --upgrade twine
-  twine upload --repository testpypi dist/* -u __token__ -p <YOUR_TEST_PYPI_API_TOKEN>
-
-Security notes
-- Do not commit private keys or API tokens into the repository. Use repository secrets for CI and local environment variables for temporary tests.
-- Keep the GPG private key secure and rotate PyPI tokens if compromised.
+Key components include data loading, error and bias analysis, clustering, and plotting. See src/ for modules and tests/ for examples.
 
 If anything above should be clarified further (more examples, screenshots, or step-by-step token creation), say which part to expand.
-
-If you ever need anything installed, just ask me to install it: provide the installation command(s) you want run and paste the command output here so I can continue (or run them locally and paste results).
