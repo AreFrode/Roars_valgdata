@@ -1,0 +1,11 @@
+pre-commit
+black
+isort
+mypy
+pytest
+pytest-cov
+coverage
+nbconvert
+papermill
+twine
+build

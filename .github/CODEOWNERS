@@ -1,0 +1,6 @@
+# CODEOWNERS
+# Update this file with the GitHub usernames of code owners/maintainers.
+# Format: <pattern> <github-username>
+
+# Default owner for the repository (replace with actual maintainers)
+* @arefk
