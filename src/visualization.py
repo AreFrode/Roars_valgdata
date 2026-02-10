@@ -7,7 +7,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 import networkx as nx
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple
 from matplotlib.patches import Ellipse
 from matplotlib.colors import TwoSlopeNorm
 
